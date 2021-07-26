@@ -14,19 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route ::get('pokemons',function(){
-    return ['Fuego','Planta'];
-});
-Route ::get('pokemons/{especie}/{id}',function(){
-    return ['planta','fuego',['chariza']];
-});
-Route ::post('pokemons/{especie}',function(){
-    return ['charmander creado '];
-});
-Route ::put('pokemons/{id}',function(){
-    return 'pokemon actualizado';
-});
 
-Route ::delete('pokemons/{especie}/{id}',function(){
-    return 'Eliminado poquemon';
+Route::get('pokemons/{pokemon}/especie', function (){
+    return ['fuego','Planta'];
+});
+Route::get('pokemons/{pokemon}/especie/{habilidad}', function (){
+    return ['Buscando'];
+});
+Route::post('pokemons/{pokemon}/especie', function (){
+    return "Creado";
+});
+Route::put('pokemons/{pokemon}/especie/{habilidad}', function (){
+    return "Actualizado";
+});
+Route::delete('pokemons/{pokemon}/especie/{habilidad}', function (){
+    return "Eliminado";
 });
