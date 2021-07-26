@@ -37,18 +37,18 @@ Route ::delete('projects/{project}',function(){
 });
 
 //--------------
-Route::get('books/{book}/author', function (){
+Route::get('books/{book}/authors', function (){
     return ['book1, Jane Austen','book2 Paula Hawkins'];
 });
-Route::get('books/{book}/author/{author}', function (){
+Route::get('books/{book}/authors/{author}', function (){
     return ['book1, Jane Austen'];
 });
 Route::post('books/{book}/author', function (){
     return "Creado";
 });
-Route::put('books/{book}/author/{author}', function (){
+Route::put('books/{book}/authors/{author}', function (){
     return "Actualizado";
 });
-Route::delete('books/{book}/author/{author}', function (){
+Route::delete('books/{book}/authors/{author}', function (){
     return "Eliminado";
 });
