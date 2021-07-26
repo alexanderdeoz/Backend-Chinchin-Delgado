@@ -47,3 +47,21 @@ Route::put('books/{book}/title/{title}', function (){
 Route::delete('books/{book}/title/{title}', function (){
     return "Eliminado";
 });
+
+Route ::get('projects',function(){
+    return ['v1','ya valio',['Como estas ']];
+});
+Route ::get('projects/{project}',function(){
+    return 'Proyecto1';
+});
+Route ::post('projects',function(){
+    return "creado";
+});
+Route ::put('projects/{project}',function(){
+    return 'actualizado';
+});
+
+Route ::delete('projects/{project}',function(){
+    return 'Eliminado';
+});
+
