@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //return $request->user();
 //});
 
-
+/*
 Route ::get('projects',function(){
     $project = ['projects1','project2', 'project3'];
     return response()->json(
@@ -167,7 +167,7 @@ Route::get('books/{book}/authors',[BooksController ::class,'index']);
 
 Route::get('books/{book}/authors/{author}', [BooksController ::class,'show']);
 
-Route::post('books/{book}/authors', [BooksController ::class,'store']); //pendiente
+Route::post('books/{book}/authors', [BooksController ::class,'store']); 
 
 Route::put('books/{book}/authors/{author}',[BooksController ::class,'update']);
 
@@ -180,3 +180,5 @@ Route::apiResource('books/{book}/authors',BooksController::class);
 Route::prefix('book/{book}/author/{author}')->group(function () {
    Route::patch('state',[BooksController::class,'updateState']);
 });
+
+
