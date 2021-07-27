@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //return $request->user();
 //});
 
-
+/*
 Route ::get('projects',function(){
     return ['v1','ya valio',['Como estas ']];
 });
@@ -52,3 +52,5 @@ Route::put('books/{book}/authors/{author}', function (){
 Route::delete('books/{book}/authors/{author}', function (){
     return "Eliminado";
 });
+
+*/

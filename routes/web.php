@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\PokemonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,20 +15,55 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route :: get ('/',function(){
+    return 'welcom';
+});
+
+Route::get('pokemons/{pokemon}/skills',[PokemonController ::class,'index']);
+
+Route::get('pokemons/{pokemon}/skills/{skill}', [PokemonController ::class,'show']);
 
 
-Route::get('pokemons/{pokemon}/especie', function (){
-    return ['fuego','Planta'];
+Route::post('pokemons/{pokemon}/skills', [PokemonController ::class,'store']); //pendiente
+
+
+
+Route::put('pokemons/{pokemon}/skills/{skill}',[PokemonController ::class,'update']);
+
+
+
+Route::delete('pokemons/{pokemon}/skills/{skill}', [PokemonController ::class,'destroy']);
+
+
+
+
+//Route :: apiResource('pokemons/{pokemon}/skills',[PokemonController ::class,'store','index']);
+
+
+//agrupar rutas
+// rutas en singular cuando tenga funcionalidades diferentes a un crud
+/*
+---------------------------------------------------------------------------------------
+Route :: prefix('project')->group(function(){
+    //declaracion derutas
+    //funcionalidades en conjunto
+    //funcionalidades extra
+   Route ::prefix('{project}')->group(function(){
+       //est seccion necesita el id
+    Route :: patch('state',[ProjectController ::class,'updateState']); 
+   });
+   Route ::prefix('')->group(function(){
+       //esta secccion no necesita el id
+    Route :: patch('state',[ProjectController ::class,'updateState']); 
+   });
 });
-Route::get('pokemons/{pokemon}/especie/{habilidad}', function (){
-    return ['Buscando'];
+--------------------------------------------------------------------------------------------------------
+/*
+Route :: prefix('project')->group(function(){
+    //declaracion derutas
+    //funcionalidades especificas
+    Route :: patch('{project}/states',[ProjectController ::class,'updateState']); 
 });
-Route::post('pokemons/{pokemon}/especie', function (){
-    return "Creado";
-});
-Route::put('pokemons/{pokemon}/especie/{habilidad}', function (){
-    return "Actualizado";
-});
-Route::delete('pokemons/{pokemon}/especie/{habilidad}', function (){
-    return "Eliminado";
-});
+
+*/
+
