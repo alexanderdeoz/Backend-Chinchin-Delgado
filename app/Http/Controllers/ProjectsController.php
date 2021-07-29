@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProjectsController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,12 +13,16 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = ['project1','project2','project3'];
+        $projects=['Todos'];
         return response()->json(
-           ['data'=> $projects,
-           'msg'=>['sumary'=> 'consulta correcta',
-           'detail'=>'la consulta esta correcta', 
-           'code'=>'201']], 201);
+            ['data'=>$projects,
+        'msg'=>[
+            'summary'=>'consulta correcta',
+            'detail'=>'la consulta de pokemon esta correcta',
+            'code'=>'201'
+        ]
+        ],201
+        );
     }
 
     /**
@@ -29,13 +33,16 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+        $project='Creado';
         return response()->json(
-            ['data'=> null,
-            'msg' => [
-            'summary' => 'Creado correctamente',
-            'detail' => 'El proyecto se creo correctamente',
-            'code' => '201']], 201
-         );
+            ['data'=>$project,
+        'msg'=>[
+            'summary'=>'consulta correcta',
+            'detail'=>'la consulta de pokemon esta correcta',
+            'code'=>'201'
+        ]
+        ],201
+        );
     }
 
     /**
@@ -46,12 +53,15 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        $project = 'project1';
+        $project='Buscando';
         return response()->json(
-           ['data'=> $project,
-           'msg'=>['sumary'=> 'consulta correcta',
-           'detail'=>'la consulta esta correcta', 
-           'code'=>'200']], 200
+            ['data'=>$project,
+        'msg'=>[
+            'summary'=>'consulta correcta',
+            'detail'=>'la consulta de pokemon esta correcta',
+            'code'=>'201'
+        ]
+        ],201
         );
     }
 
@@ -64,13 +74,14 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $project = 'project1';
         return response()->json(
-           [  'data' => null,
-           'msg' => [
-           'summary' => 'Actualizado correctamente',
-           'detail' => 'EL proyecto se actualizó correctamente',
-           'code' => '201']], 201
+            ['data'=>null,
+        'msg'=>[
+            'summary'=>'consulta correcta',
+            'detail'=>'la consulta de pokemon esta correcta',
+            'code'=>'204'
+        ]
+        ],204
         );
     }
 
@@ -82,24 +93,28 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
+        $project='Eliminaod';
         return response()->json(
-            ['data'=> null,
-            'msg' => [
-            'summary' => 'Eliminado correctamente',
-            'detail' => 'EL proyecto se eliminó correctamente',
-            'code' => '201']], 201
-         );
+            ['data'=>$project,
+        'msg'=>[
+            'summary'=>'consulta correcta',
+            'detail'=>'la consulta de pokemon esta correcta',
+            'code'=>'201'
+        ]
+        ],201
+        );
     }
-
     public function updateState()
     {
-        $project = 'project1';
+        $project='aprobado';
         return response()->json(
-           [  'data' => null,
-           'msg' => [
-           'summary' => 'Actualizado correctamente',
-           'detail' => 'EL proyecto se actualizó correctamente',
-           'code' => '201']], 201
+            ['data'=>$project,
+        'msg'=>[
+            'summary'=>'Actualizado correctamente',
+            'detail'=>'el estado se actualizo correctamnte',
+            'code'=>'201'
+        ]
+        ],201
         );
     }
 }

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //return $request->user();
 //});
 
-/*
+
 Route ::get('projects',function(){
     $project = ['projects1','project2', 'project3'];
     return response()->json(
@@ -91,9 +91,9 @@ Route ::delete('projects/{project}',function(){
     
 });
 //----------------------------------------------
-Route::apiResource('projects',ProjectsController::class);
+Route::apiResource('projects',ProjectsController::class);//
 
-Route::prefix('project')->group(function () {
+Route::prefix('project')->group(function () {//en singular para evitar conflictos con el api resourse
     Route::prefix('{project}')->group(function () {
         Route::patch('state',[ProjectsController::class,'updateState']);
     });
@@ -101,68 +101,9 @@ Route::prefix('project')->group(function () {
         Route::patch('state',[ProjectsController::class,'updateState']);
     });
 });
-//--------------
-/*Route::get('books/{book}/authors', function (){
-    $book = ['book1 Jane Austen','book2 Paula Hawkins'];
-        return response()->json(
-           ['data'=> $book,
-           'msg'=>['sumary'=> 'consulta correcta',
-           'detail'=>'la consulta esta correcta', 
-           'code'=>'201']], 201);
-});
-Route::get('books/{book}/authors/{author}', function (){
-    $book = 'book1';
-    return response()->json(
-        [
-            'data' => $book,
-            'msg' => [
-                'summary' => 'consulta correcta',
-                'detail' => 'la consulta del autor se ejecutó correctamente',
-                'code' => '200'
-            ]
-        ], 200
-    );;
-});
-Route::post('books/{book}/author', function (){
-    $book = 'book1';
-    return response()->json(
-        [
-            'data' => $book,
-            'msg' => [
-                'summary' => 'Creado correctamente',
-                'detail' => 'El autor se creo correctamente',
-                'code' => '201'
-            ]
-        ], 201
-    );
-});
-Route::put('books/{book}/authors/{author}', function (){
-    $book = 'book1';
-    return response()->json(
-        [
-            'data' => null,
-            'msg' => [
-                'summary' => 'Actualizado correctamente',
-                'detail' => 'EL autor se actualizó correctamente',
-                'code' => '201'
-            ]
-        ], 201
-    );
-});
-Route::delete('books/{book}/authors/{author}', function (){
-    $book = 'book1';
-    return response()->json(
-        [
-            'data' => $book,
-            'msg' => [
-                'summary' => 'Eliminado correctamente',
-                'detail' => 'EL proyecto se eliminó correctamente',
-                'code' => '201'
-            ]
-        ], 201
-    );
-});
+
 //--------------------------- */
+//Route:: apiResource('projects.authors', AuthorsController::class); api resourse sirve para crear un conjunto de rutas para una api 
 Route::get('books/{book}/authors',[BooksController ::class,'index']);
 
 Route::get('books/{book}/authors/{author}', [BooksController ::class,'show']);
