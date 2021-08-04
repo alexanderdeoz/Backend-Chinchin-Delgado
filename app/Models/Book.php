@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Models;
-
-//use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-   // use HasFactory;
-   protected $table = 'books';//nombre en plurarl
-    protected $fillable = ['author',
+    use HasFactory;
+   protected $table = 'app.books';//nombre en plurar
+    protected $fillable = ['code',
     'date',
+    'description',
     'genere',
     'title',
     'n_pages',];
@@ -20,11 +20,11 @@ class Book extends Model
         'n_pages' => 'number',
     ];
 //
-   /* public function author(){
+   /* public function authors(){
         return $this->hasOne(Author::class);
     } */
 //
-    public function author(){
+    public function authors(){
         return $this->hasMany(Author::class);
     } 
 //

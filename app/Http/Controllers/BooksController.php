@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 
 class BooksController extends Controller
 {
@@ -12,10 +15,16 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $book = ['book1 Jane Austen','book2 Paula Hawkins'];
+    {// SQL
+        // $projects = DB::select('select * from app.projects');
+
+        // QUERY BUILDER
+        // $projects = DB::table('app.projects')->get();
+
+        // ELOQUENT
+        $books = Book::get();
         return response()->json(
-           ['data'=> $book,
+           ['data'=> $books,
            'msg'=>['sumary'=> 'consulta correcta',
            'detail'=>'la consulta esta correcta', 
            'code'=>'201']], 201);
@@ -28,11 +37,43 @@ class BooksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $book = 'book1';
+    { //SQL
+        /*$book = DB::insert('insert into app.books (code,date,description,genere,title,created_at,updated_at)
+                            values (?,?,?,?,?,?,?)', [
+            $request->code,
+            $request->date,
+            $request->description,
+            $request->genere,
+            $request->title,
+            $request->created_at,
+            $request->updated_at,
+        ]);*/
+        //QUERY BUILDER
+
+        //ELOQUENT
+      /*  $books= Book::create([
+            $request->code,
+            $request->date,
+            $request->description,
+            $request->genere,
+            $request->title,
+            $request->created_at,
+            $request->updated_at
+        ]);*/
+        //ELOQUENT 2
+        $books = new Book();
+        $books->code= $request->code;
+        $books->date= $request->date;
+        $books->description= $request->description;
+        $books->genere= $request->genere;
+        $books->title=$request->title;
+        $books->n_pages=$request->n_pages;
+        $books->save();
+        
+      //$book = 'book1';
     return response()->json(
         [
-            'data' => $book,
+            'data' => $books,
             'msg' => [
                 'summary' => 'Creado correctamente',
                 'detail' => 'El autor se creo correctamente',
@@ -48,12 +89,18 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $book = 'book1';
+    public function show(Book $books)
+    {// SQL
+        // $projects = DB::select('select * from app.projects where id = ?', [$project]);
+
+        // QUERY BUILDER
+        // $project = DB::table('app.projects')->where('id', '=', $project)->first();
+
+        // ELOQUENT
+        $books = Book::find($books);
         return response()->json(
             [
-                'data' => $book,
+                'data' => $books,
                 'msg' => [
                     'summary' => 'consulta correcta',
                     'detail' => 'la consulta del autor se ejecutó correctamente',
@@ -70,9 +117,16 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $books)
     {
-        $book = 'book1';
+        $books= Book::find($books);
+        $books->code= $request->code;
+        $books->date= $request->date;
+        $books->description= $request->description;
+        $books->genere= $request->genere;
+        $books->title=$request->title;
+        $books->n_pages=$request->n_pages;
+        $books->save();
         return response()->json(
             [
                 'data' => null,
@@ -91,12 +145,14 @@ class BooksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Book $books)
     {
-        $book = 'book1';
+        $books= Book::find($books);
+        $books->delete();
+        $books = 'Eliminado';
         return response()->json(
             [
-                'data' => $book,
+                'data' => $books,
                 'msg' => [
                     'summary' => 'Eliminado correctamente',
                     'detail' => 'EL proyecto se eliminó correctamente',

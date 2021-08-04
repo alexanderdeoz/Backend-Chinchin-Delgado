@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //return $request->user();
 //});
 
-
+/*
 Route ::get('projects',function(){
     $project = ['projects1','project2', 'project3'];
     return response()->json(

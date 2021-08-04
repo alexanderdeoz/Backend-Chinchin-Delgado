@@ -11,27 +11,27 @@ class CreateAppProjectsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::connection(env('DB_CONNECTION_APP'))->create('projects', function (Blueprint $table) {
-            $table->id('code')->comment('my comment');
-            $table->string('email')->comment('my comment');
-            $table->date('date')->comment('my comment');
-            $table->text('description')->comment('my comment')->nullable();
-            $table->boolean('approved')->default(true)->comment('my comment');
-            $table->string('title')->comment('my comment');
-            $table->softDeletes()->comment('my comment');
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::connection(env('DB_CONNECTION_APP'))->create('app.projects', function (Blueprint $table) {
+    //         $table->id('code')->comment('my comment');
+    //         $table->string('email')->comment('my comment');
+    //         $table->date('date')->comment('my comment');
+    //         $table->text('description')->comment('my comment')->nullable();
+    //         $table->boolean('approved')->default(true)->comment('my comment');
+    //         $table->string('title')->comment('my comment');
+    //         $table->softDeletes()->comment('my comment');
+    //         $table->timestamps();
+    //     });
+    // }
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('projects');
-    }
+    // public function down()
+    // {
+    //     Schema::connection(env('DB_CONNECTION_APP'))->dropIfExists('app.projects');
+    // }
 }
